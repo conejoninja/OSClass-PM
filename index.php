@@ -210,11 +210,9 @@ require_once 'ModelPM.php';
          $newPMs = ModelPM::newInstance()->getRecipientMessages(osc_logged_user_id(), 1, 1, 'pm_id', 'DESC');
          $countPMs = count($newPMs);
       
-         if($countPMs > 0 && $countPMs < 2) {
-            osc_add_flash_ok_message(__('You have','osclass_pm') . ' ' . $countPMs . ' ' . __('new Personal Message!','osclass_pm'));
-         } elseif($countPMs > 1) {
-            osc_add_flash_ok_message(__('You have','osclass_pm') . ' ' . $countPMs . ' ' . __('new Personal Messages!','osclass_pm'));
-         } 
+         if($countPMs > 0) {
+            osc_add_flash_ok_message('<a href="'.osc_render_file_url(osc_plugin_folder(__FILE__) . 'user-inbox.php').'" >'.sprintf(_n('You have %d new Personal Message!', 'You have %d new Personal Message!', $countPMs, 'osclass_pm'), $countPMs).'</a>');
+          }
       }
    }
    
