@@ -36,7 +36,7 @@ span.sender_name {
 }
 
 .pm_message {
-   margin: 0 0 0 8em;
+   margin: 0 0 0 0;
 }
 
 .pm_tools {

@@ -2,14 +2,12 @@
    $recipPMs = ModelPM::newInstance()->getSenderMessages(osc_logged_user_id(), 1, 'pm_id', 'DESC');
    $recipCount = count($recipPMs);
 ?>
-<div class="content user_account">
-    <h1>
-        <strong><?php _e('Outbox', 'osclass_pm'); ?></strong>
-    </h1>
-    <div id="sidebar">
-        <?php echo osc_private_user_menu(); ?>
-    </div>
-    <div id="main">
+<h2 class="tituloSeccion"><span><?php _e('Outbox', 'osclass_pm'); ?></span></h2>
+<div class="userColumnaIzquierda" id="dosColumnaIzquierda">
+    <?php echo osc_private_user_menu() ; ?>
+</div> <!-- #dosColumnaDerecha -->
+<div class="userColumnaDerecha" id="dosColumnaDerecha">
+    <div class="content user_account">
             <h2><?php _e('Outbox', 'osclass_pm'); ?></h2>
             <form action="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/user-proc.php'; ?>" method="POST">
             <input type="hidden" name="page" value="custom" />
