@@ -83,12 +83,12 @@ require_once 'ModelPM.php';
     
     function pmFlashAlert() {
        $userSettings = ModelPM::newInstance()->getUserPmSettings(osc_logged_user_id());
-       return $userSettings['flash_alert'];
+       return @$userSettings['flash_alert'];
     }
     
     function pmSaveSent() {
        $userSettings = ModelPM::newInstance()->getUserPmSettings(osc_logged_user_id());
-       return $userSettings['save_sent'];
+       return @$userSettings['save_sent'];
     }
     
     /**
