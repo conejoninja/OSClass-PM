@@ -258,47 +258,7 @@ require_once 'ModelPM.php';
 		</script>
 		<script type='text/javascript' src="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/js/jquery.ui.widget.js'; ?>"></script>
 		<script type='text/javascript' src="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/js/jquery.ui.position.js'; ?>"></script>
-		<?php /*<script type="text/javascript" charset="utf-8">
-			
-			$(function() {
-		var availableTags = [
-		 <?php $users = ModelPM::newInstance()->getUsers();  
-		 $uCount = count($users);?>
-       <?php foreach($users as $user) { ?>
-         { label: "<?php echo $user['s_name']; ?>", value: "<?php echo $user['s_name']; ?>" },
-       <?php } ?>
-       { label: "<?php echo pmAdmin(); ?>", value: "<?php echo pmAdmin(); ?>" }
-		];
-		$( "#pmNames" ).autocomplete({
-			source: availableTags,
-			minLength: 2
-		});
-	});
-	</script> */?>
-	<?php /*
-	<script type="text/javascript">  
-    $(document).ready(function(){
-    $("#newMessage-form").submit(function(){
-        $.post(
-            "<?php echo osc_ajax_plugin_url("osclass_pm/user-proc.php");?>",
-            $("#newMessage-form").serialize(),
-            function(data){
-                if (data.success){
-                    $("span#promo-message").css({"color":"green"} );
-                    $("span#promo-message").css({"font-size":"20px"} );
-                }
-                else{
-                    $("span#promo-message").css({"color":"red"});
-                    $("span#promo-message").css({"font-size":"20px"} );
-                }
-                $("span#promo-message").html(data.message);
-            },
-            "json"
-        );
-    });
-});
-    </script>
-    */ ?>
+		
        <?php
        }
        if(osclass_pm_is_pub_profile() && osc_is_web_user_logged_in()) {

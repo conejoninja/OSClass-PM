@@ -86,14 +86,6 @@
         </select>
         <br />
         <br />
-        <? /* This is for future version once I get the drafts working.
-        <label for="pmDrafts" style="font-weight: bold;"><?php _e('Enable the Drafts box', 'osclass_pm'); ?></label>:<br />
-        <select name="pmDrafts" id="pmDrafts"> 
-        	<option <?php if($pmDrafts == 1){echo 'selected="selected"';}?>value='1'><?php _e('Yes','osclass_pm'); ?></option>
-        	<option <?php if($pmDrafts == 0){echo 'selected="selected"';}?>value='0'><?php _e('No','osclass_pm'); ?></option>
-        </select>
-        <br />
-        <br /> */ ?>
         <label for="pmSent" style="font-weight: bold;"><?php _e('Enable the Outbox', 'osclass_pm'); ?></label>:<br />
         <select name="pmSent" id="pmSent"> 
         	<option <?php if($pmSent == 1){echo 'selected="selected"';}?>value='1'><?php _e('Yes','osclass_pm'); ?></option>
