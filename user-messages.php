@@ -15,14 +15,14 @@
    $words[] = array('<div class="messQuote">','</div>', '<div class="quoteAuthor">','</div>');
    $message  = osc_mailBeauty($pm['pm_message'], $words) ;
 ?>
-<div class="content user_account">
-    <h2>
-        <strong><?php echo __('Message: ', 'osclass_pm') . osc_highlight($pm['pm_subject'], 50); ?></strong>
-    </h2>
-    <div id="sidebar">
-        <?php echo osc_private_user_menu(); ?>
-    </div>
-    <div id="main">
+<h2 class="tituloSeccion"><span><?php echo sprintf(__('Message: %s', 'osclass_pm'), osc_highlight($pm['pm_subject'], 50)); ?></span></h2>
+<div class="userColumnaIzquierda" id="dosColumnaIzquierda">
+    <?php echo osc_private_user_menu() ; ?>
+</div> <!-- #dosColumnaDerecha -->
+<div class="userColumnaDerecha" id="dosColumnaDerecha">
+    <div class="content user_account">
+        
+        
       <?php if(Params::getParam('box') == 'inbox') { ?>
          <a href="<?php echo osc_base_url(true) . '?page=custom&file=osclass_pm/user-inbox.php'; ?>">Back to inbox</a>
       <?php } elseif(Params::getParam('box') == 'outbox') { ?>

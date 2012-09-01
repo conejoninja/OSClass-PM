@@ -2,14 +2,13 @@
 if(osc_is_web_user_logged_in()){
 $userSettings = ModelPM::newInstance()->getUserPmSettings(osc_logged_user_id());
 ?>
-<div class="content user_account">
-    <h1>
-        <strong><?php _e('PM Settings', 'osclass_pm'); ?></strong>
-    </h1>
-    <div id="sidebar">
-        <?php echo osc_private_user_menu(); ?>
-    </div>
-    <div id="main">
+<h2 class="tituloSeccion"><span><?php _e('PM Settings', 'osclass_pm'); ?></span></h2>
+<div class="userColumnaIzquierda" id="dosColumnaIzquierda">
+    <?php echo osc_private_user_menu() ; ?>
+</div> <!-- #dosColumnaDerecha -->
+<div class="userColumnaDerecha" id="dosColumnaDerecha">
+    <div class="content user_account">
+
     <form action="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/user-proc.php'; ?>" method="POST">
       <input type="hidden" name="page" value="custom" />
       <input type="hidden" name="file" value="osclass_pm/user-proc.php" />

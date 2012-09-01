@@ -24,7 +24,7 @@ if($messCount < maxPMs()){
       $item = Item::newInstance()->findByPrimaryKey($itemId);
    }
 ?>
-<h2 class="tituloSeccion"><span><?php _e('User account manager', 'malibook'); ?></span></h2>
+<h2 class="tituloSeccion"><span><?php _e('New message', 'osclass_pm'); ?></span></h2>
 <div class="userColumnaIzquierda" id="dosColumnaIzquierda">
     <?php echo osc_private_user_menu() ; ?>
 </div> <!-- #dosColumnaDerecha -->
