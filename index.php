@@ -212,6 +212,7 @@ require_once 'ModelPM.php';
             }
         }
     }
+<<<<<<< HEAD
     // End Before HTML
 
     // Everything between this section is user side related.  
@@ -273,6 +274,93 @@ require_once 'ModelPM.php';
                 });
             </script>
         <?php }
+=======
+// End HELPERS
+
+// Before HTML 
+
+   function osclass_pm_before_html() {
+      $inboxFull = Params::getParam('f');
+      if(osc_is_web_user_logged_in() && $inboxFull == 1) {
+         osc_add_flash_error_message(__('Sorry the selected user\'s inbox is full! Please try again later.','osclass_pm'));
+      }
+      if(osc_is_web_user_logged_in() && pmFlashAlert() == 1 && !osclass_pm_is_inbox() && !osclass_pm_is_messages() ) {
+         $newPMs = ModelPM::newInstance()->getRecipientMessages(osc_logged_user_id(), 1, 1, 'pm_id', 'DESC');
+         $countPMs = count($newPMs);
+      
+         if($countPMs > 0) {
+            osc_add_flash_ok_message('<a href="'.osc_render_file_url(osc_plugin_folder(__FILE__) . 'user-inbox.php').'" >'.sprintf(_n('You have %d new Personal Message!', 'You have %d new Personal Message!', $countPMs, 'osclass_pm'), $countPMs).'</a>');
+         } 
+      }
+   }
+   
+// End Before HTML
+
+// Everything between this section is user side related.  
+  
+    function osclass_pm_header() {
+       // Check to see if the page loaded is one of our plugins pages that way 
+       // we only load the javascript when we need it.
+       if(osclass_pm_is_inbox() || osclass_pm_is_outbox() || osclass_pm_is_drafts() || osclass_pm_is_send() || osclass_pm_is_messages() || osclass_pm_is_pmSettings() ) {
+       ?>
+       <link rel="stylesheet" type="text/css" href="<?php echo osc_base_url() .'oc-content/plugins/osclass_pm/css/style.css'; ?>" />
+       <link rel="stylesheet" type="text/css" href="<?php echo osc_base_url() .'oc-content/plugins/osclass_pm/css/pmTables.css'; ?>" />
+       <script type='text/javascript' src="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/js/jquery.dataTables.min.js'; ?>"></script>
+       <script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {			   
+				$('#datatables_pm').dataTable( {
+					"aaSorting": [[ 1, "desc" ]],
+					"bStateSave": true,
+					"sPaginationType": "full_numbers",
+					"aoColumnDefs": [{ "bSortable": false, "aTargets": [ 0 ] }]
+				} );
+				
+				$('#datatables_pm_outbox').dataTable( {
+					"aaSorting": [[ 1, "desc" ]],
+					"bStateSave": true,
+					"sPaginationType": "full_numbers",
+					"aoColumnDefs": [{ "bSortable": false, "aTargets": [ 0 ] }]
+				} );
+			
+			
+			$('#checkAll').change(function() {
+            $(".delChecks").attr("checked", this.checked);
+         });
+         
+         $(".delChecks").change(function() {
+            $("#checkAll").attr("checked", $(".delChecks:checked").length == $(".delChecks").length);
+
+         });
+			
+			} );
+		</script>
+		<script type='text/javascript' src="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/js/jquery.ui.widget.js'; ?>"></script>
+		<script type='text/javascript' src="<?php echo osc_base_url() . 'oc-content/plugins/osclass_pm/js/jquery.ui.position.js'; ?>"></script>
+       <?php
+       }
+       if(osclass_pm_is_pub_profile() && osc_is_web_user_logged_in()) {
+          $userId = Params::getParam('id');
+          $user = User::newInstance()->findByPrimaryKey($userId);
+          ?>
+          <script type="text/javascript" >
+            $(document).ready(function(){
+               $('#user_data').append("<li><a href=\"<?php echo osc_base_url(true) . '?page=custom&file=osclass_pm/user-send.php&userId=' . $userId . '&mType=new'; ?>\"><?php echo __('Send PM to ','osclass_pm') . $user['s_name']; ?></a></li>");
+            });
+          </script>
+          <?php
+       }
+       
+       if(osc_is_ad_page()){
+          $user = User::newInstance()->findByPrimaryKey(osc_item_user_id());
+          ?>
+          <script type="text/javascript" >
+            $(document).ready(function(){
+               $('.name').append("<br /><a href=\"<?php echo osc_base_url(true) . '?page=custom&file=osclass_pm/user-send.php&userId=' . osc_item_user_id() . '&itemId=' . osc_item_id() . '&mType=new'; ?>\"><?php echo __('Send PM to ','osclass_pm') . $user['s_name']; ?></a>");
+            });
+          </script>
+          <?php
+       }
+>>>>>>> 36c7c562bf8dc01036f3095b1f9e5d1487a7c4e2
     }
 
     function osclass_pm_user_menu() {      
