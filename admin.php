@@ -114,4 +114,4 @@
         <?php echo '<br />' . __('Version ', 'osclass_pm') .  $pluginInfo['version'] . ' | ' .  __('Author','osclass_pm') . ' <a class="external" target="_blank" href="' . $pluginInfo['author_uri'] . '">' . $pluginInfo['author'] . '</a>'; ?>        
      </fieldset>
     </div>
-</form>
+</form
